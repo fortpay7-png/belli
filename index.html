@@ -3,592 +3,548 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bellinati Perez | Portal Oficial de Negociação e Autoatendimento</title>
+    <title>Jardim de Luxo | Floricultura Premium</title>
+    <!-- Fontes Elegantes do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        /* Variáveis de Cores (Paleta Premium) */
         :root {
-            --primary: #0A1E36;       /* Azul Escuro Institucional */
-            --secondary: #1E3A5F;     /* Azul de Destaque */
-            --accent: #E0A926;        /* Dourado Corporativo */
-            --text-main: #1E293B;     /* Cinza Escuro */
-            --text-muted: #64748B;    /* Cinza Claro */
-            --bg-light: #F8FAFC;      /* Fundo Geral */
-            --card-bg: #FFFFFF;
-            --whatsapp-color: #25D366;
+            --cor-primaria: #8c6258;     /* Terracota / Rosa Queimado */
+            --cor-escura: #2c2523;        /* Cinza Quase Preto */
+            --cor-clara: #fdfbf7;         /* Off-White */
+            --cor-detalhe: #d9c5b2;       /* Dourado Fosco / Bege */
+            --cor-whatsapp: #25d366;
+            --fonte-titulo: 'Cormorant Garamond', serif;
+            --fonte-corpo: 'Montserrat', sans-serif;
         }
 
+        /* Configurações Globais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: var(--fonte-corpo);
         }
-
         body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            background-color: var(--cor-clara);
+            color: var(--cor-escura);
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-        /* Barra de Segurança */
-        .security-bar {
-            background-color: #061324;
-            color: #94A3B8;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.8px;
-            padding: 10px 24px;
+        /* Cabeçalho Fixo */
+        header {
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(140, 98, 88, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #1E293B;
-            flex-wrap: wrap;
-            gap: 10px;
+            padding: 20px;
         }
-
-        .security-indicator {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #10B981;
+        .logo {
+            font-family: var(--fonte-titulo);
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--cor-primaria);
         }
-
-        /* Banner de Aviso de Segurança */
-        .alert-banner {
-            background-color: #FEF3C7;
-            border-bottom: 1px solid #FDE68A;
-            color: #92400E;
-            padding: 12px 20px;
-            text-align: center;
-            font-size: 13px;
+        .menu a {
+            margin-left: 30px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             font-weight: 500;
-            line-height: 1.4;
+        }
+        .menu a:hover {
+            color: var(--cor-primaria);
         }
 
-        /* Header Corporativo */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, #112D4E 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .logo-sub {
-            font-size: 10px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            color: var(--accent);
-            text-transform: uppercase;
-            margin-top: 6px;
-            line-height: 1.4;
-        }
-
-        /* Container de Conteúdo */
-        .main-container {
-            width: 100%;
-            max-width: 1140px;
-            margin: 30px auto;
-            padding: 0 20px;
-            flex: 1;
-        }
-
-        .hero-section {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .hero-section h2 {
-            color: var(--primary);
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 14px;
-            line-height: 1.3;
-        }
-
-        .hero-section p {
-            color: var(--text-muted);
-            font-size: 15px;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Grid de Serviços Otimizado */
-        .services-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        /* Cards Informativos */
-        .service-card {
-            background: var(--card-bg);
-            border: 1px solid #E2E8F0;
-            border-radius: 8px;
-            padding: 30px 20px;
-            position: relative;
+        /* Banner Hero Minimalista */
+        .hero {
+            background: linear-gradient(rgba(44, 37, 35, 0.4), rgba(44, 37, 35, 0.4)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            height: 70vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: white;
         }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
+        .hero h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 64px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            color: var(--cor-detalhe);
+        }
+        .btn-premium {
             background-color: transparent;
-            transition: background-color 0.2s ease;
-        }
-
-        .service-card:hover {
-            border-color: #CBD5E1;
-        }
-
-        .icon-box {
-            width: 50px;
-            height: 50px;
-            background-color: #F1F5F9;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .service-card h3 {
-            color: var(--primary);
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        /* Lista de requisitos dentro do card */
-        .card-details {
-            list-style: none;
-            margin-bottom: 25px;
+            color: white;
+            border: 1px solid white;
+            padding: 14px 36px;
             font-size: 13px;
-            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        .btn-premium:hover {
+            background-color: white;
+            color: var(--cor-escura);
         }
 
-        .card-details li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* Vitrine de Produtos */
+        .produtos {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
         }
-
-        .card-details li::before {
-            content: "✓";
-            color: #10B981;
-            font-weight: bold;
+        .secao-titulo {
+            text-align: center;
+            margin-bottom: 50px;
         }
-
-        /* Botões apontando para o WhatsApp */
-        .action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--primary);
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 14px 20px;
-            border-radius: 6px;
+        .secao-titulo h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--cor-primaria);
+        }
+        .secao-titulo p {
             font-size: 14px;
-            font-weight: 600;
-            transition: background-color 0.2s;
-            margin-top: auto;
+            color: #7a6e67;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        .card {
+            background: white;
+            border: 1px solid rgba(140, 98, 88, 0.08);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(44, 37, 35, 0.05);
+        }
+        .img-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .card:hover img {
+            transform: scale(1.04);
+        }
+        .card-info {
+            padding: 25px;
             text-align: center;
         }
-
-        .service-card:hover .action-btn {
-            background-color: var(--whatsapp-color);
-        }
-
-        .btn-icon {
-            flex-shrink: 0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Seção Adicional de Informações / Instruções */
-        .info-section {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            border-radius: 8px;
-            padding: 30px 20px;
-            margin-bottom: 40px;
-        }
-
-        .info-section h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 20px;
-            border-bottom: 2px solid #F1F5F9;
-            padding-bottom: 10px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .info-item h4 {
-            color: var(--secondary);
-            font-size: 15px;
+        .card-info h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 24px;
+            font-weight: 400;
             margin-bottom: 8px;
+            color: var(--cor-escura);
         }
-
-        .info-item p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
+        .preco {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--cor-primaria);
+            margin-bottom: 20px;
         }
-
-        /* Widget Fixo do WhatsApp */
-        .whatsapp-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--whatsapp-color);
+        .btn-comprar {
+            display: block;
+            background-color: var(--cor-escura);
             color: white;
-            border-radius: 50px;
-            padding: 14px 24px;
-            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            z-index: 10000;
-            transition: transform 0.2s ease, background-color 0.2s;
+            padding: 12px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        .btn-comprar:hover {
+            background-color: var(--cor-primaria);
         }
 
-        .whatsapp-widget:hover {
-            transform: translateY(-2px);
-            background-color: #1EC157;
+        /* Sobre / Manifesto */
+        .sobre {
+            background-color: #f6f1eb;
+            padding: 100px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(140, 98, 88, 0.05);
         }
-
-        /* Rodapé Completo */
-        footer {
-            background-color: #09111E;
-            color: #64748B;
-            padding: 40px 20px 30px 20px;
-            font-size: 13px;
-            border-top: 4px solid var(--primary);
-        }
-
-        .footer-inner {
-            max-width: 1140px;
+        .sobre-conteudo {
+            max-width: 700px;
             margin: 0 auto;
         }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #1E293B;
+        .sobre h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 38px;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+        .sobre p {
+            font-size: 16px;
+            color: #5a4f4a;
+            font-weight: 300;
         }
 
-        .footer-col h4 {
-            color: #CBD5E1;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+        /* Rodapé Corporativo */
+        footer {
+            background-color: var(--cor-escura);
+            color: #a3968e;
+            padding: 60px 20px 30px 20px;
+            font-size: 13px;
+            font-weight: 300;
+            border-top: 4px solid var(--cor-primaria);
         }
-
-        .footer-col p {
-            line-height: 1.7;
-            margin-bottom: 8px;
-        }
-
-        .footer-col strong {
-            color: #94A3B8;
-        }
-
-        .compliance-badges {
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
             flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
         }
-
-        .badge {
-            border: 1px solid #1E293B;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 11px;
-            text-transform: uppercase;
-            color: #94A3B8;
-            background: #0C1726;
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
         }
-
+        .footer-col h4 {
+            color: white;
+            font-family: var(--fonte-titulo);
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .footer-col p {
+            margin-bottom: 10px;
+        }
+        .footer-col a {
+            color: #d9c5b2;
+        }
+        .footer-col a:hover {
+            color: white;
+            text-decoration: underline;
+        }
         .footer-bottom {
-            padding-top: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
             text-align: center;
             font-size: 12px;
-            color: #475569;
-            line-height: 1.6;
+            letter-spacing: 1px;
+        }
+        .politica-link {
+            cursor: pointer;
+            text-decoration: underline;
+            margin: 0 10px;
         }
 
-        /* MEDIA QUERIES PARA TELAS MAIORES (DESKTOP E TABLETS) */
-        @media (min-width: 768px) {
-            header {
-                padding: 50px 20px;
-            }
-            .logo-text {
-                font-size: 28px;
-            }
-            .logo-sub {
-                font-size: 11px;
-                letter-spacing: 4px;
-            }
-            .main-container {
-                margin: 50px auto;
-            }
-            .hero-section h2 {
-                font-size: 32px;
-            }
-            .services-layout {
-                gap: 30px;
-                margin-bottom: 60px;
-            }
-            .service-card {
-                padding: 40px 30px;
-            }
-            .service-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-            }
-            .service-card::before {
-                height: 4px;
-            }
-            .info-section {
-                padding: 40px;
-                margin-bottom: 60px;
-            }
-            .info-grid {
-                gap: 30px;
-            }
-            footer {
-                padding: 60px 20px 30px 20px;
-            }
+        /* Botão Flutuante do WhatsApp Discreto */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--cor-whatsapp);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
         }
 
-        /* AJUSTE ESPECÍFICO PARA DISPOSITIVOS MÓVEIS MUITO PEQUENOS */
-        @media (max-width: 480px) {
-            .security-bar {
-                justify-content: center;
-                text-align: center;
-                padding: 8px 15px;
-            }
-            .hero-section {
-                text-align: left;
-            }
-            /* Transforma o Widget Flutuante em uma barra fixa na base do celular (Melhor UX) */
-            .whatsapp-widget {
-                position: fixed;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                width: 100%;
-                border-radius: 0;
-                padding: 16px;
-                box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
-            }
-            body {
-                padding-bottom: 50px; /* Garante que o botão fixo não cubra o conteúdo */
-            }
+        /* Modal das Políticas Exigidas pela G2 Risk / Ads */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            overflow: auto;
+        }
+        .modal-content {
+            background-color: var(--cor-clara);
+            margin: 5% auto; 
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            border-top: 4px solid var(--cor-primaria);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #aaa;
+            transition: color 0.2s;
+        }
+        .close-modal:hover {
+            color: var(--cor-escura);
+        }
+        .modal-content h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 32px;
+            color: var(--cor-escura);
+            margin-bottom: 20px;
+        }
+        .modal-content h3 {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 25px 0 10px 0;
+            color: var(--cor-primaria);
+            border-bottom: 1px solid rgba(140, 98, 88, 0.2);
+            padding-bottom: 5px;
+        }
+        .modal-content p, .modal-content ul {
+            font-size: 13px;
+            color: #5a4f4a;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .modal-content ul {
+            padding-left: 20px;
+        }
+
+        /* Responsividade Básica */
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 42px; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .menu a { margin: 0 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Barra de Segurança -->
-    <div class="security-bar">
-        <span>Ambiente Criptografado de Atendimento</span>
-        <div class="security-indicator">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-            <span>Conexão Segura Ativa</span>
-        </div>
-    </div>
-
-    <!-- Banner contra Fraudes -->
-    <div class="alert-banner">
-        <strong>Atenção contra golpes:</strong> Nós nunca solicitamos pagamentos direcionados a contas de pessoas físicas. Certifique-se de que o boleto emitido possui o beneficiário correto.
-    </div>
-
     <!-- Cabeçalho -->
     <header>
-        <div class="logo-text">Bellinati Perez</div>
-        <div class="logo-sub">Assessoria Jurídica & Recuperação de Crédito</div>
+        <div class="nav-container">
+            <div class="logo">JARDIM DE LUXO</div>
+            <nav class="menu">
+                <a href="#">Início</a>
+                <a href="#produtos">Coleções</a>
+                <a href="#sobre">Manifesto</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="main-container">
+    <!-- Banner Principal (Hero) -->
+    <section class="hero">
+        <h1>HARU FLORICULTURA</h1>
+        <p>Arranjos Exclusivos & Curadoria Premium</p>
+        <a href="#produtos" class="btn-premium">Explorar Coleção</a>
+    </section>
+
+    <!-- Seção de Produtos -->
+    <section id="produtos" class="produtos">
+        <div class="secao-titulo">
+            <h2>A Coleção Assinatura</h2>
+            <p>Selecionadas à mão no dia da entrega</p>
+        </div>
         
-        <div class="hero-section">
-            <h2>Canais Oficiais de Negociação Online</h2>
-            <p>Selecione o serviço corporativo abaixo. Para sua comodidade e agilidade, todo o processamento de propostas é realizado diretamente através da nossa Central de Atendimento verificada no WhatsApp.</p>
-        </div>
-
-        <!-- Grid de Serviços -->
-        <div class="services-layout">
+        <div class="grid-produtos">
             
-            <!-- Card 1: Segunda Via -->
-            <div class="service-card">
-                <div>
-                    <div class="icon-box">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                    </div>
-                    <h3>2ª Via de Boleto</h3>
-                    <p>Atualize a parcela de seu acordo, emita segundas vias vencidas ou solicite o espelho da linha digitável diretamente.</p>
-                    <ul class="card-details">
-                        <li>Envio imediato em formato PDF</li>
-                        <li>Atualização automática de encargos</li>
-                        <li>Compatível com qualquer banco</li>
-                    </ul>
+            <!-- Produto 1 -->
+            <div class="card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80" alt="Rosas Premium">
                 </div>
-                <a href="https://api.whatsapp.com/send?phone=5511911492036&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20a%20Segunda%20Via%20do%20meu%20Boleto." class="action-btn" target="_blank">
-                    <span class="btn-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.4 5.6C16.7 3.9 14.5 3 12 3c-4.9 0-8.9 4-8.9 8.9 0 1.6.4 3.1 1.2 4.5L3 21l4.9-1.3c1.3.7 2.8 1.1 4.3 1.1 4.9 0 8.9-4 8.9-8.9.1-2.4-.8-4.6-2.5-6.3zM12 19.3c-1.4 0-2.7-.4-3.8-1.1l-.3-.2-2.8.7.7-2.8-.2-.3c-.8-1.2-1.2-2.6-1.2-4.1 0-4.1 3.3-7.4 7.4-7.4 2 0 3.9.8 5.3 2.2 1.4 1.4 2.2 3.3 2.2 5.3-.1 4.1-3.4 7.4-7.5 7.4zm4.1-5.6c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1-.2.3-.6.7-.8.9-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.2.2-.4 0-.2 0-.3-.1-.4-.1-.2-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.5c-.2 0-.5.1-.7.3-.3.3-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 4 3.5.6.2 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z" fill="white"/></svg>
-                    </span>
-                    Soluções de Boleto
-                </a>
+                <div class="card-info">
+                    <h3>Bouquet Rosas Império</h3>
+                    <p class="preco">R$ 180,00</p>
+                    <a href="https://wa.me/5511977811884?text=Olá! Gostaria de encomendar o Bouquet Rosas Império." target="_blank" class="btn-comprar">Encomendar via WhatsApp</a>
+                </div>
             </div>
 
-            <!-- Card 2: Consulta -->
-            <div class="service-card">
-                <div>
-                    <div class="icon-box">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    </div>
-                    <h3>Consulta de Contrato</h3>
-                    <p>Localize seus dados no sistema interno para verificar valores em aberto, propostas liberadas por credores ou situação judicial.</p>
-                    <ul class="card-details">
-                        <li>Verificação segura via CPF</li>
-                        <li>Histórico de parcelas pagas</li>
-                        <li>Descontos disponíveis na mesa</li>
-                    </ul>
+            <!-- Produto 2 -->
+            <div class="card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Orquídeas">
                 </div>
-                <a href="https://api.whatsapp.com/send?phone=5511911492036&text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20Consulta%20do%20meu%20Contrato/CPF." class="action-btn" target="_blank">
-                    <span class="btn-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.4 5.6C16.7 3.9 14.5 3 12 3c-4.9 0-8.9 4-8.9 8.9 0 1.6.4 3.1 1.2 4.5L3 21l4.9-1.3c1.3.7 2.8 1.1 4.3 1.1 4.9 0 8.9-4 8.9-8.9.1-2.4-.8-4.6-2.5-6.3zM12 19.3c-1.4 0-2.7-.4-3.8-1.1l-.3-.2-2.8.7.7-2.8-.2-.3c-.8-1.2-1.2-2.6-1.2-4.1 0-4.1 3.3-7.4 7.4-7.4 2 0 3.9.8 5.3 2.2 1.4 1.4 2.2 3.3 2.2 5.3-.1 4.1-3.4 7.4-7.5 7.4zm4.1-5.6c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1-.2.3-.6.7-.8.9-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.2.2-.4 0-.2 0-.3-.1-.4-.1-.2-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.5c-.2 0-.5.1-.7.3-.3.3-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 4 3.5.6.2 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z" fill="white"/></svg>
-                    </span>
-                    Consultar meu CPF
-                </a>
+                <div class="card-info">
+                    <h3>Orquídea Solitária Real</h3>
+                    <p class="preco">R$ 240,00</p>
+                    <a href="https://wa.me/5511977811884?text=Olá! Gostaria de encomendar a Orquídea Solitária Real." target="_blank" class="btn-comprar">Encomendar via WhatsApp</a>
+                </div>
             </div>
 
-            <!-- Card 3: Sessões de Acordo -->
-            <div class="service-card">
-                <div>
-                    <div class="icon-box">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-                    </div>
-                    <h3>Sessões de Acordo</h3>
-                    <p>Agende uma conversa com nossos conciliadores para elaborar planos de parcelamento customizados de acordo com suas finanças.</p>
-                    <ul class="card-details">
-                        <li>Mediações em tempo real</li>
-                        <li>Condições exclusivas de quitação</li>
-                        <li>Homologação jurídica garantida</li>
-                    </ul>
+            <!-- Produto 3 -->
+            <div class="card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=600&q=80" alt="Arranjo Silvestre">
                 </div>
-                <a href="https://api.whatsapp.com/send?phone=5511911492036&text=Ol%C3%A1!%20Gostaria%20de%20iniciar%20uma%20Sess%C3%A3o%20de%20Acordo%20e%20Concilia%C3%A7%C3%A3o." class="action-btn" target="_blank">
-                    <span class="btn-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.4 5.6C16.7 3.9 14.5 3 12 3c-4.9 0-8.9 4-8.9 8.9 0 1.6.4 3.1 1.2 4.5L3 21l4.9-1.3c1.3.7 2.8 1.1 4.3 1.1 4.9 0 8.9-4 8.9-8.9.1-2.4-.8-4.6-2.5-6.3zM12 19.3c-1.4 0-2.7-.4-3.8-1.1l-.3-.2-2.8.7.7-2.8-.2-.3c-.8-1.2-1.2-2.6-1.2-4.1 0-4.1 3.3-7.4 7.4-7.4 2 0 3.9.8 5.3 2.2 1.4 1.4 2.2 3.3 2.2 5.3-.1 4.1-3.4 7.4-7.5 7.4zm4.1-5.6c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1-.2.3-.6.7-.8.9-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.2.2-.4 0-.2 0-.3-.1-.4-.1-.2-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.5c-.2 0-.5.1-.7.3-.3.3-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 4 3.5.6.2 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z" fill="white"/></svg>
-                    </span>
-                    Solicitar Conciliação
-                </a>
+                <div class="card-info">
+                    <h3>Arranjo Silvestre Contemporâneo</h3>
+                    <p class="preco">R$ 195,00</p>
+                    <a href="https://wa.me/5511977811884?text=Olá! Gostaria de encomendar o Arranjo Silvestre Contemporâneo." target="_blank" class="btn-comprar">Encomendar via WhatsApp</a>
+                </div>
             </div>
 
         </div>
+    </section>
 
-        <!-- Seção Adicional de Instruções -->
-        <section class="info-section">
-            <h3>Instruções para uma Negociação Segura</h3>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h4>Horário de Funcionamento</h4>
-                    <p>Nossa assessoria e canais de resposta automática e humana operam de Segunda a Sexta-feira, das 08:00 às 20:00, e aos Sábados, das 08:00 às 14:00.</p>
-                </div>
-                <div class="info-item">
-                    <h4>Documentação Necessária</h4>
-                    <p>Para agilizar sua triagem no WhatsApp, tenha em mãos o número do seu CPF, o nome da instituição credora original e, se houver, o número do contrato.</p>
-                </div>
-                <div class="info-item">
-                    <h4>Política de Confidencialidade</h4>
-                    <p>Os dados informados durante as sessões de chat são protegidos por sigilo bancário e tratados rigorosamente sob as normas da Lei Geral de Proteção de Dados (LGPD).</p>
-                </div>
-            </div>
-        </section>
+    <!-- Sobre Nós / Manifesto -->
+    <section id="sobre" class="sobre">
+        <div class="sobre-conteudo">
+            <h2>Arte, Efemeridade e Elegância</h2>
+            <p>Acreditamos que dar flores é um ato de alta sofisticação. Nossa curadoria não apenas organiza plantas, cria experiências esculturais com frescor absoluto e fragrâncias marcantes, desenhadas para os ambientes mais exigentes.</p>
+        </div>
+    </section>
 
-    </main>
-
-    <!-- Widget Geral de Contato Flutuante -->
-    <a href="https://api.whatsapp.com/send?phone=5511911492036&text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20Central%20da%20Bellinati%20Perez." class="whatsapp-widget" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.4 5.6C16.7 3.9 14.5 3 12 3c-4.9 0-8.9 4-8.9 8.9 0 1.6.4 3.1 1.2 4.5L3 21l4.9-1.3c1.3.7 2.8 1.1 4.3 1.1 4.9 0 8.9-4 8.9-8.9.1-2.4-.8-4.6-2.5-6.3zM12 19.3c-1.4 0-2.7-.4-3.8-1.1l-.3-.2-2.8.7.7-2.8-.2-.3c-.8-1.2-1.2-2.6-1.2-4.1 0-4.1 3.3-7.4 7.4-7.4 2 0 3.9.8 5.3 2.2 1.4 1.4 2.2 3.3 2.2 5.3-.1 4.1-3.4 7.4-7.5 7.4zm4.1-5.6c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1-.2.3-.6.7-.8.9-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.6-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.2.2-.4 0-.2 0-.3-.1-.4-.1-.2-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.5c-.2 0-.5.1-.7.3-.3.3-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 4 3.5.6.2 1 .4 1.4.5.6.2 1.1.2 1.5.1.5-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z" fill="white"/></svg>
-        Falar com Atendente
-    </a>
-
-    <!-- Rodapé Corporativo -->
+    <!-- Rodapé Corporativo Conforme Exigências -->
     <footer>
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Bellinati Perez</h4>
-                    <p>Sociedade de Advogados</p>
-                    <p>Especialistas em recuperação corporativa de crédito e assessoria em escala nacional com as maiores instituições financeiras.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Sede Administrativa</h4>
-                    <p><strong>Endereço:</strong> Rua da Glória, 273</p>
-                    <p>Centro Cívico — Curitiba / PR</p>
-                    <p>CEP: 80030-060</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Ouvidoria e Suporte</h4>
-                    <p><strong>Central Telefônica:</strong> 0800 570 0010</p>
-                    <p>Canal direcionado a esclarecimentos contratuais e suporte ao consumidor.</p>
-                    <div class="compliance-badges">
-                        <div class="badge">LGPD Compliant</div>
-                        <div class="badge">SSL Secured</div>
-                    </div>
-                </div>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Jardim de Luxo</h4>
+                <p>Curadoria de arranjos sob medida e experiências florais de alto padrão.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Bellinati Perez Advogados Associados. CNPJ: 01.403.469/0001-92. Registro OAB/PR nº 684.</p>
-                <p>Este portal é um canal facilitador de autoatendimento digital. Os direitos sobre marcas pertencem aos seus respectivos titulares institucionais.</p>
+            <div class="footer-col">
+                <h4>Atendimento</h4>
+                <p>E-mail: <a href="mailto:atendimento@atendimentoadv.site">atendimento@atendimentoadv.site</a></p>
+                <p>Horário: Segunda a Sexta — 09h às 18h</p>
             </div>
+            <div class="footer-col">
+                <h4>Institucional</h4>
+                <p>CNPJ: 41.487.550/0001-64</p>
+                <p>
+                    <a class="politica-link" onclick="abrirModal('privacidade')">Política de Privacidade</a> | 
+                    <a class="politica-link" onclick="abrirModal('termos')">Termos de Uso e Reembolso</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Jardim de Luxo. Todos os direitos reservados. Em conformidade com a LGPD e diretrizes internacionais de comércio eletrônico.</p>
         </div>
     </footer>
 
+    <!-- Botão Flutuante do WhatsApp Discreto -->
+    <a href="https://wa.me/5511977811884?text=Olá! Gostaria de solicitar um arranjo personalizado." class="whatsapp-float" target="_blank" title="Fale Conosco no WhatsApp">
+        <svg style="width:28px;height:28px" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.5 2 2 6.5 2 12.04C2 13.81 2.46 15.5 3.33 17L2.05 21.78L6.96 20.5C8.4 21.3 10.17 21.75 12.04 21.75C17.56 21.75 22.04 17.27 22.04 11.73C22.05 9.04 21 6.53 19.1 4.63C17.2 2.74 14.69 1.71 12.04 2M12.04 3.55C14.28 3.55 16.39 4.42 17.97 6C19.56 7.59 20.43 9.7 20.43 11.94C20.43 16.58 16.67 20.34 12.04 20.34C10.56 20.34 9.11 19.95 7.85 19.21L7.55 19L4.66 19.76L5.44 16.94L5.24 16.63C4.43 15.34 4 13.85 4 12.28C4 7.64 7.76 3.55 12.04 3.55M9.27 7.58C9.07 7.58 8.73 7.66 8.48 7.93C8.22 8.2 7.5 8.92 7.5 10.38C7.5 11.84 8.56 13.25 8.71 13.45C8.86 13.66 10.74 16.71 13.69 17.87C16.14 18.84 16.64 18.64 17.18 18.59C17.72 18.54 18.92 17.87 19.17 17.18C19.42 16.47 19.42 15.87 19.35 15.75C19.27 15.62 19.07 15.55 18.78 15.4C18.48 15.25 17.04 14.54 16.77 14.44C16.5 14.34 16.3 14.29 16.1 14.59C15.9 14.89 15.34 15.55 15.17 15.75C15 15.95 14.83 15.97 14.53 15.82C13.5 15.3 12.4 14.6 11.5 13.82C10.8 13.22 10.3 12.5 10.15 12.25C10 11.95 10.12 11.8 10.27 11.65C10.4 11.5 10.57 11.27 10.72 11.1C10.87 10.93 10.92 10.8 11.03 10.58C11.13 10.36 11.08 10.17 11 10.03C10.93 9.88 10.27 8.24 10 7.58C9.72 6.93 9.45 7 9.27 7.58Z"/></svg>
+    </a>
+
+    <!-- Modal das Políticas -->
+    <div id="modalPoliticas" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModal()">&times;</span>
+            <div id="conteudoModal"></div>
+        </div>
+    </div>
+
+    <!-- Script de Controle e Textos Jurídicos Estruturados para G2 Risk -->
+    <script>
+        const politicasTextos = {
+            privacidade: `
+                <h2>Política de Privacidade</h2>
+                <p><strong>Última atualização:</strong> Julho de 2026</p>
+                <p>Esta Política de Privacidade descreve de que forma a empresa vinculada ao CNPJ 41.487.550/0001-64 ("Nós") coleta, utiliza, armazena e protege os dados dos usuários em total alinhamento com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018) e com as diretrizes internacionais de conformidade e gestão de risco comercial (G2 Risk Services).</p>
+                
+                <h3>1. Coleta de Informações e Rastreamento (Cookies e Pixels)</h3>
+                <p>Para fins de otimização de campanhas de tráfego pago (Google Ads e Meta Ads), este site pode fazer uso de cookies e identificadores de anúncios. Esses dados não revelam sua identidade diretamente e servem apenas para análise estatística de comportamento no site. Ao interagir voluntariamente pelos canais de atendimento (WhatsApp ou e-mail), você consente com o tratamento de dados estritamente necessários para viabilizar o seu atendimento comercial.</p>
+                
+                <h3>2. Finalidade do Tratamento de Dados</h3>
+                <p>Todos os dados compartilhados via WhatsApp ou E-mail profissional (atendimento@atendimentoadv.site) são utilizados única e exclusivamente para: processar pedidos, organizar cronogramas de entrega de flores/arranjos, emitir faturamento legal e responder a consultas de suporte ao cliente.</p>
+                
+                <h3>3. Proteção e Segurança da Informação</h3>
+                <p>Implementamos salvaguardas técnicas e administrativas comerciais para proteger seus dados contra acessos não autorizados. Não comercializamos, compartilhamos ou alugamos quaisquer informações de contato para terceiros em nenhuma hipótese.</p>
+                
+                <h3>4. Direitos do Usuário</h3>
+                <p>Em conformidade com a LGPD, o usuário tem o direito assegurado de solicitar a retificação, exclusão definitiva ou limitação do uso de seus dados de contato a qualquer momento através do e-mail oficial: <strong>atendimento@atendimentoadv.site</strong>.</p>
+            `,
+            termos: `
+                <h2>Termos de Uso, Envio e Reembolso</h2>
+                <p><strong>Última atualização:</strong> Julho de 2026</p>
+                <p>Ao navegar por este catálogo eletrônico mantido sob o CNPJ 41.487.550/0001-64, você concorda com as políticas comerciais e operacionais descritas a seguir, dispostas em conformidade com o Código de Defesa do Consumidor (CDC).</p>
+                
+                <h3>1. Processamento de Pedidos e Comercialização</h3>
+                <p>Os arranjos exibidos constituem um catálogo institucional. A conclusão de compras, o alinhamento de detalhes de personalização e as transações de pagamento ocorrem de forma direta via canais de atendimento indicados (WhatsApp / E-mail), garantindo segurança e verificação de disponibilidade.</p>
+                
+                <h3>2. Política de Entrega e Envio</h3>
+                <p>Por trabalharmos com produtos altamente perecíveis (flores frescas), as entregas são restritas a nível regional e agendadas previamente com o cliente durante o atendimento. É de inteira responsabilidade do comprador certificar-se de que haverá alguém apto a receber o produto no endereço e horário estipulados.</p>
+                
+                <h3>3. Política de Cancelamento, Troca e Reembolso</h3>
+                <p>Visando a transparência exigida por auditorias financeiras e de risco mercantil (G2 Risk):</p>
+                <ul>
+                    <li><strong>Produtos Perecíveis personalizados:</strong> Por se tratar de arranjos montados sob medida com matéria-prima viva, cancelamentos sem custos só serão aceitos se formalizados até 24 horas antes do horário estipulado para a entrega.</li>
+                    <li><strong>Avarias no transporte:</strong> Caso o arranjo sofra danos estruturais graves durante o trajeto de entrega, o cliente deverá notificar o suporte imediatamente com registro fotográfico para que providenciemos a substituição imediata ou o estorno do valor pago.</li>
+                </ul>
+                
+                <h3>4. Canal de Ouvidoria e Suporte Comercial</h3>
+                <p>Qualquer disputa, dúvida sobre cobranças ou requisições logísticas devem ser direcionadas ao e-mail institucional: <strong>atendimento@atendimentoadv.site</strong>.</p>
+            `
+        };
+
+        function abrirModal(tipo) {
+            document.getElementById("conteudoModal").innerHTML = politicasTextos[tipo];
+            document.getElementById("modalPoliticas").style.display = "block";
+        }
+        function fecharModal() {
+            document.getElementById("modalPoliticas").style.display = "none";
+        }
+        window.onclick = function(event) {
+            var modal = document.getElementById("modalPoliticas");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
